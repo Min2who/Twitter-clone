@@ -12,11 +12,13 @@ export async function initServer() {
     typeDefs: `
       type Query {
         sayHello: String
+        sayHelloTo(name: String!): String
       }
        `,
-    resolvers: {
+    resolvers: {  
       Query: {
         sayHello: () => 'Hello, world!',
+        sayHelloTo: (parent: any,{}:{name: string} ) => `Hello, $(name)!`,
       },
     },
   });

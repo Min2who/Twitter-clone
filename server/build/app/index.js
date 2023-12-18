@@ -25,11 +25,13 @@ function initServer() {
             typeDefs: `
       type Query {
         sayHello: String
+        sayHelloTo(name: String!): String
       }
        `,
             resolvers: {
                 Query: {
                     sayHello: () => 'Hello, world!',
+                    sayHelloTo: (parent, {}) => `Hello, $(name)!`,
                 },
             },
         });
