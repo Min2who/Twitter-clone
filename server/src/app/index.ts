@@ -7,15 +7,12 @@ export async function initServer() {
   const graphqlServer = new ApolloServer({
     typeDefs: `
       type Query {
-        hello: String
-      }
-      type Mutation {
-
+        sayHello: String
       }
        `,
     resolvers: {
       Query: {
-        hello: () => 'Hello, world!',
+        sayHello: () => 'Hello, world!',
       },
     },
   });

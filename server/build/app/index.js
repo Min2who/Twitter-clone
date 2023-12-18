@@ -20,8 +20,16 @@ function initServer() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         const graphqlServer = new server_1.ApolloServer({
-            typeDefs: "",
-            resolvers: {},
+            typeDefs: `
+      type Query {
+        sayHello: String
+      }
+       `,
+            resolvers: {
+                Query: {
+                    sayHello: () => 'Hello, world!',
+                },
+            },
         });
         yield graphqlServer.start();
         app.use('/graphql', (0, express4_1.expressMiddleware)(graphqlServer));
